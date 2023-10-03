@@ -1,11 +1,35 @@
 <h1>Posts</h1>
 
-<% if @posts.any? %>
-	<% @posts.each do |post| %>
-		<%= post.image %>
-	<% end %>
-<% else %>
-	<p>No post yet</p>
-<% end%>
+<div class="container">
+	<div class="row row-cols-md-3 g-4">		
+		<% if @posts.any? %>
+			<% @posts.each do |post| %>
+				<div class="col">
+					<div class="card h-100">
+						<div class="card-img-top text-center">						
+							<%= link_to post_path(post) do %>
+								<% if post.photos.attached? %>					
+									<%= image_tag post.photos.first, height:200 %>						
+								<% else %>					
+									<p>No photos found</p>
+								<% end%>
+							<% end %>
+						</div>
+						<div class="card-body text-center">
+							<p class="card-text"><%= post.caption %></p>
+						</div>
+					    <div class="card-footer text-end">
+					      <small class="text-body-secondary"><%= post.created_at %></small>
+					    </div>
+					</div>
+				</div>
+			<% end %>
+		<% else %>
+			<p>No post yet</p>
+		<% end %>
+		</div>	
+	</div>
+</div>
 
+<br>
 <%= link_to 'Create New Post', new_post_path %>

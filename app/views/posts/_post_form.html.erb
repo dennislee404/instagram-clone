@@ -1,0 +1,13 @@
+<%= form_with model: @post do |f| %>
+	<%= f.label :photos %>
+	<%= f.file_field :photos, multiple: true %>
+	<br>
+	<%= f.label :caption %>
+	<%= f.text_field :caption %>
+	<br>
+	<% if @post.new_record? %>
+		<%= f.submit 'Create'%>
+	<% else %>
+		<%= f.submit 'Edit'%>
+	<% end %>
+<% end %>
