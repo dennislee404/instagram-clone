@@ -27,6 +27,26 @@
 		</button>
 	</div>
 
+	<div class="container border border-primary">
+		<h3>Comments</h3>
+
+		<div>
+			<%= form_for ([@post, @comment]) do |f| %>
+				<%= f.text_area :content%>
+				<br>
+				<%= f.submit 'Comment'%>
+			<% end %>			
+		</div>
+
+		<% if @post.comments.any? %>
+			<% @post.comments.each do |comment| %>
+				<p><%= comment.user.email %> : <%= comment.content %></p>
+			<% end %>
+		<% else %>
+			<p>Be the first to comment</p>
+		<% end %>
+	</div>
+
 
 	<ul>
 		<li><%= link_to 'Edit Post', edit_post_path %></li>

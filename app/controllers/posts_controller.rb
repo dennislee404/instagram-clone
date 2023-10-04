@@ -18,6 +18,7 @@ class PostsController < ApplicationController
 	end
 
 	def show
+		@comment = Comment.new
 	end
 
 	def edit
@@ -43,6 +44,6 @@ class PostsController < ApplicationController
 		end
 
 		def post_params
-			params.require(:post).permit( :caption, photos: [])
+			params.require(:post).permit(:caption, photos: [])
 		end
 end
