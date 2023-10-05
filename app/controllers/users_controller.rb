@@ -5,15 +5,13 @@ class UsersController < ApplicationController
 	end
 
 	def follow
-		@user = User.find(params[:id])
 		current_user.following_users.create(followee_id: @user.id)
-		redirect_to root_path
-		# redirect_back(fallback_location: root_path)
+		redirect_back(fallback_location: root_path)
 	end
 
 	def unfollow
 		current_user.following_users.find_by(followee_id: @user.id).destroy
-		redirect_to root_path
+		redirect_back(fallback_location: root_path)
 	end
 
 	private

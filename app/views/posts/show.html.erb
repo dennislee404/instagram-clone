@@ -27,6 +27,9 @@
 		</button>
 	</div>
 
+	<%= button_to 'Like', like_post_path(@post) %>
+	<p><%= @post.likes.count %></p>
+
 	<div class="container border border-primary">
 		<h3>Comments</h3>
 

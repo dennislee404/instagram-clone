@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   has_many :follower_users, foreign_key: :followee_id, class_name: 'Follow'
   has_many :followers, through: :follower_users
@@ -13,7 +14,7 @@ class User < ApplicationRecord
   has_many :following_users, foreign_key: :follower_id, class_name: 'Follow'
   has_many :followees, through: :following_users
 
-  def is_following?
-    
+  def is_following?(followee_id)
+    followees.where(id: followee_id).first
   end
 end
