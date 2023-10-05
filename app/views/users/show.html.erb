@@ -1,1 +1,5 @@
 <%= @user.email %>
+<br>
+
+<%= button_to 'Follow', follow_user_path(@user) %>
+<%= button_to 'Unfollow', unfollow_user_path(@user) %>
