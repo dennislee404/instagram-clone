@@ -40,8 +40,8 @@
 
 		<% if @post.comments.any? %>
 			<% @post.comments.each do |comment| %>
-				<p><%= comment.user.email %> : <%= comment.content %></p>
-			<% end %>
+				<p><%= comment.user.email %> : <%= comment.content %><span><%= link_to 'Delete Comment', post_comment_path(@post, comment), data: {turbo_method: :delete, turbo_confirm: "Are you sure?" } %></span>
+			<% end %></p>
 		<% else %>
 			<p>Be the first to comment</p>
 		<% end %>
