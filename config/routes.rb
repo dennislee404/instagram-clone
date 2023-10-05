@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments
   end
+
+  post "/users/:id/follow", to: "user#follow", as: "follow_user", method: "post"
 end
